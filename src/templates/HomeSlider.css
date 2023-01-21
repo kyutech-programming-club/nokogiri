@@ -13,3 +13,8 @@ li.item {
 	color: #fff;
 	background-color: #ff5a5f;
 }	
+
+
+ul.horizontal-list::-webkit-scrollbar{
+	display: none;
+}
