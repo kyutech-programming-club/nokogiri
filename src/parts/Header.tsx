@@ -14,6 +14,9 @@ const Header = () => {
     if (matchPath("/login", pathname)) {
       setIsNone("none");
       setPosition("relative");
+    } else if (matchPath("/signup", pathname)) {
+      setIsNone("none");
+      setPosition("relative");
     } else {
       setPosition("absolute");
     }
@@ -38,7 +41,7 @@ const Header = () => {
         whiteSpace="nowrap"
       >
         <Link
-          href="#"
+          href="/"
           backgroundImage={proken_mojiicon}
           backgroundSize="cover"
           textIndent="-9999999px"

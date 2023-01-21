@@ -1,26 +1,19 @@
 import {
   Box,
-  Center,
-  Text,
-  FormControl,
-  FormHelperText,
-  FormLabel,
-  Input,
   Button,
-  Container,
+  Center,
+  FormControl,
   Heading,
+  Input,
   Link,
-  Divider,
 } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
-import { useAtom } from "jotai";
-import { useForm } from "react-hook-form";
 import React from "react";
+import { useForm } from "react-hook-form";
+import Content from "../Content";
+import Footer from "../parts/Footer";
 import Header from "../parts/Header";
 
-const LoginPage = () => {
-  const navigate = useNavigate();
-
+const SignUpPage = () => {
   const {
     register,
     handleSubmit,
@@ -31,19 +24,33 @@ const LoginPage = () => {
     <Box position="relative">
       <Header />
       <form>
+        <Heading m="24px" fontWeight="900" textAlign="center">
+          九工大プロ研に入る
+        </Heading>
         <Center>
-          <Box bg="#f0f0ee" marginTop="50px" width="388px">
+          <Box bg="#f0f0ee" width="388px">
             <FormControl>
               <Box textAlign="center">
-                <Heading m="24px" fontWeight="900">
-                  メンバーログイン
-                </Heading>
+                <Input
+                  color="rgba(0,0,0,.3)"
+                  type=""
+                  borderColor={"blackAlpha.500"}
+                  focusBorderColor={"blackAlpha.500"}
+                  placeholder="お名前"
+                  height="48px"
+                  width="calc(100% - 72px)"
+                  borderRadius="0"
+                  {...register("email", {
+                    required: "メールアドレスを入力してください",
+                  })}
+                  m="16px 0"
+                />
                 <Input
                   color="rgba(0,0,0,.3)"
                   type="email"
                   borderColor={"blackAlpha.500"}
                   focusBorderColor={"blackAlpha.500"}
-                  placeholder="メールアドレス"
+                  placeholder="九工大で使っているメールアドレス"
                   height="48px"
                   width="calc(100% - 72px)"
                   borderRadius="0"
@@ -70,14 +77,8 @@ const LoginPage = () => {
                   bg="#01a001"
                   color="white"
                 >
-                  ログイン
+                  サインアップ
                 </Button>
-
-                <Box borderTop="solid #cccccc">
-                  <Link color="teal.500" href="/signup" fontSize="12px">
-                    メンバー登録がまだな方はこちら
-                  </Link>
-                </Box>
               </Box>
             </FormControl>
           </Box>
@@ -87,4 +88,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default SignUpPage;
