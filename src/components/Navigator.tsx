@@ -1,9 +1,13 @@
 import { Box, Link } from "@chakra-ui/react";
 import React from "react";
+import LoginButton from "./LoginButton";
+import { useAtom } from "jotai";
+import { stateAtom } from "../state";
+import LogoutButton from "./LogoutButton";
 
-const Navigator = () => {
+const Navigator = (props: any) => {
   return (
-    <Box display="flex" alignItems='center'>
+    <Box display="inline-block" alignItems="center" whiteSpace="nowrap">
       <Link
         href="#"
         fontFamily="noto sans japanese,sans-serif"
@@ -16,7 +20,8 @@ const Navigator = () => {
         プロ研について
       </Link>
       <Link
-        href="#"
+        whiteSpace="nowrap"
+        href="/members"
         fontFamily="noto sans japanese,sans-serif"
         fontWeight="900"
         fontSize="16px"
