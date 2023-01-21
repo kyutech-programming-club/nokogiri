@@ -1,6 +1,7 @@
 import { Box, Heading, Link } from "@chakra-ui/layout";
 import React from "react";
 import Navigator from "../components/Navigator";
+import Hamburger from "../components/Hamburger";
 import proken_mojiicon from "../images/proken__mojiicon.png";
 
 const Header = () => {
@@ -37,6 +38,7 @@ const Header = () => {
         </Link>
       </Heading>
       <Navigator />
+      <Hamburger />
     </Box>
   );
 };
