@@ -15,7 +15,6 @@ import {
   Tooltip,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import { useAtom } from "jotai";
 import { useForm } from "react-hook-form";
 import React from "react";
 import Header from "../parts/Header";
@@ -27,9 +26,10 @@ import {
 import { FirebaseError } from "@firebase/util";
 import { auth } from "../firebase";
 import { stateAtom } from "../state";
+import { useAtom } from "jotai";
 
 const LoginPage = () => {
-  const [, setState] = useAtom(stateAtom);
+  const [state, setState] = useAtom(stateAtom);
   const navigate = useNavigate();
   const toast = useToast();
 
@@ -46,6 +46,7 @@ const LoginPage = () => {
   const onSubmit = async (data: formValues) => {
     try {
       await signInWithEmailAndPassword(auth, data.email, data.password);
+      setState({ ...state, isLoggedIn: true });
       toast({
         title: "ログインしました。",
         status: "success",

@@ -1,25 +1,24 @@
 import { Box, Button } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { matchPath, useLocation, useNavigate } from "react-router-dom";
-import { stateAtom } from "../state";
 import { useAtom } from "jotai";
+import { stateAtom } from "../state";
 
 type Props = {
   isNone: string;
 };
 
-const LoginButton = (props: Props) => {
-
+const LogoutButton = () => {
+  const [state, setState] = useAtom(stateAtom);
   const navigate = useNavigate();
 
   const click = () => {
-    console.log("login");
-    navigate("/login");
+    setState({ ...state, isLoggedIn: false });
   };
 
   return (
     <Button
-      display={props.isNone}
+      //   display={props.isNone}
       onClick={click}
       colorScheme="blue"
       variant="solid"
@@ -29,9 +28,9 @@ const LoginButton = (props: Props) => {
         borderRadius: "17px",
       }}
     >
-      ログイン
+      ログアウト
     </Button>
   );
 };
 
-export default LoginButton;
+export default LogoutButton;

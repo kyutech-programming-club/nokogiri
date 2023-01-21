@@ -3,10 +3,7 @@ import { atomWithStorage } from 'jotai/utils';
 
 type State = {
     isLoggedIn?: boolean;
-    isAdminLoggedIn?: boolean;
-    companyName?: string;
-    familyName?: string;
-    givenName?: string;
+    userName?: string;
 };
 
 export const stateAtom = atomWithStorage<State>('state', {});

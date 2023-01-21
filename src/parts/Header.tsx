@@ -1,12 +1,19 @@
-import { Box, Heading, Link } from "@chakra-ui/layout";
+import { Box, Flex, Heading, Link } from "@chakra-ui/layout";
 import React, { useEffect, useState } from "react";
 import { matchPath, useLocation } from "react-router-dom";
 import Navigator from "../components/Navigator";
-import proken_mojiicon from "../images/proken__mojiicon.png";
+import Hamburger from "../components/Hamburger";
+import LogoutButton from "../components/LogoutButton";
+import LoginButton from "../components/LoginButton";
+import { stateAtom } from "../state";
+import { useAtom } from "jotai";
+import ProkenIcon from "../components/ProkenIcon";
+import { Spacer } from "@chakra-ui/react";
 
 const Header = () => {
   const [isNone, setIsNone] = useState<string>("");
   const [position, setPosition] = useState<any>("absolute");
+  const [state] = useAtom(stateAtom);
 
   const { pathname } = useLocation();
 
@@ -26,39 +33,20 @@ const Header = () => {
   }, [pathname]);
 
   return (
-    <Box
+    <Flex
       className="inner"
       width="100%"
       height="80px"
-      display="flex"
       position={position}
       borderBottom="solid"
-      alignItems="center"
+      alignItems='center'
     >
-      <Heading
-        size="2xl"
-        fontWeight="light"
-        color="white"
-        marginLeft="5"
-        marginTop="0px"
-        whiteSpace="nowrap"
-      >
-        <Link
-          href="/"
-          backgroundImage={proken_mojiicon}
-          backgroundSize="cover"
-          textIndent="-9999999px"
-          overflow="hidden"
-          whiteSpace="nowrap"
-          width="132px"
-          height="46px"
-          display="block"
-        >
-          kyutech_proken
-        </Link>
-      </Heading>
-      <Navigator isNone={isNone} />
-    </Box>
+      <ProkenIcon />
+      <Navigator />
+      <Spacer />
+      {state.isLoggedIn ? <LogoutButton /> : <LoginButton isNone={isNone} />}
+      <Hamburger />
+    </Flex>
   );
 };
 
