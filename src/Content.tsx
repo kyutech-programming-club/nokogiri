@@ -2,7 +2,7 @@ import { Box } from "@chakra-ui/react";
 import React from "react";
 import HeaderDowner from "./templates/HeaderDowner";
 import HomeSlider from "./templates/HomeSlider";
-import Articles from "./views/Articles";
+import Articles from "./templates/Articles";
 
 const Content = () => {
   return (

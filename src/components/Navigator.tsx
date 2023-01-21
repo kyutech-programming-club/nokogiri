@@ -1,9 +1,10 @@
 import { Box, Link } from "@chakra-ui/react";
 import React from "react";
+import LoginButton from "./LoginButton";
 
-const Navigator = () => {
+const Navigator = (props: any) => {
   return (
-    <Box display="flex" alignItems='center'>
+    <Box display="flex" alignItems="center">
       <Link
         href="#"
         fontFamily="noto sans japanese,sans-serif"
@@ -26,6 +27,7 @@ const Navigator = () => {
       >
         所属メンバー
       </Link>
+      <LoginButton isNone={props.isNone} />
     </Box>
   );
 };
