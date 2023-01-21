@@ -16,7 +16,7 @@ const Navigator = () => {
         プロ研について
       </Link>
       <Link
-        href="#"
+        href="/members"
         fontFamily="noto sans japanese,sans-serif"
         fontWeight="900"
         fontSize="16px"
