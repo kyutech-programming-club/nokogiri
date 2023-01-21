@@ -6,7 +6,7 @@ import Articles from "./templates/Articles";
 
 const Content = () => {
   return (
-    <Box>
+    <Box flex='1'>
       <HomeSlider />
       <HeaderDowner />
       <Articles />

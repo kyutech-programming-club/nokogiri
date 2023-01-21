@@ -17,6 +17,9 @@ const Header = () => {
     } else if (matchPath("/signup", pathname)) {
       setIsNone("none");
       setPosition("relative");
+    } else if (matchPath("/confirm", pathname)) {
+      setIsNone("none");
+      setPosition("relative");
     } else {
       setPosition("absolute");
     }
