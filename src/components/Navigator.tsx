@@ -29,7 +29,7 @@ const Navigator = (props: any) => {
         margin="auto 16px"
         top="1px"
       >
-        所属メンバー
+        メンバーたち
       </Link>
     </Box>
   );

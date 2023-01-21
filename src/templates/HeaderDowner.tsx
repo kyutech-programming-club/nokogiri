@@ -7,7 +7,6 @@ import waku from "../images/waku.png";
 const HeaderDowner = () => {
   return (
     <Box
-      className="inner"
       margin="0 auto"
       backgroundSize="cover"
       _before={{
