@@ -1,14 +1,18 @@
-import { Box, Flex, Text, Image, Spacer } from "@chakra-ui/react";
+import { Box, Flex, Image, Spacer } from "@chakra-ui/react";
 import React, { useState } from "react";
 import ProkenIcon from "../components/ProkenIcon";
 import proken_icon from "../images/proken_icon.jpeg";
 import Navigator from "../components/Navigator";
-import TwitterIcon from "../images/twitter_icon.jpeg"
+import TwitterIcon from "../images/twitter_icon.jpeg";
+import GitHubIcon from "../images/github_icon.png"
 
 
 const Footer = () => {
   const twitter = () => {
     window.open("https://twitter.com/kyutech_proken");
+  };
+  const github = () => {
+    window.open("https://github.com/kyutech-programming-club");
   };
   const [position] = useState<any>("absolute");
   return (
@@ -34,6 +38,8 @@ const Footer = () => {
         <Navigator />
         <Spacer />
         <Image src={TwitterIcon} width="56px" height="56px" onClick={twitter}></Image>
+        <Box width="24px"></Box>
+        <Image src={GitHubIcon} width="56px" height="56px" onClick={github}></Image>
         <Box width="24px"></Box>
       </Flex>
     </Box>
