@@ -21,7 +21,7 @@ const ModalInner = () => {
         >
           プロフィールの設定
         </Link>
-        <Link position="absolute" bottom="0" mb="16px">
+        <Link href="https://twitter.com/kyutech_proken" position="absolute" bottom="0" mb="16px">
           <Button colorScheme="blue" display="flex" width="100%">
             <Image src={twitterIcon} width="32px" />
             九工大プロ研のツイッター

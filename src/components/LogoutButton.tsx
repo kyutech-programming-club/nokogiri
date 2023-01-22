@@ -13,12 +13,13 @@ const LogoutButton = () => {
   const navigate = useNavigate();
 
   const click = () => {
-    setState({ ...state, isLoggedIn: false });
+    setState({ ...state, isLoggedIn: false, uid: undefined });
+    navigate("/login");
   };
 
   return (
     <Button
-      //   display={props.isNone}
+      shadow="md"
       onClick={click}
       colorScheme="blue"
       variant="solid"

@@ -12,9 +12,6 @@ import {
   IconButton,
   Image,
   Box,
-  Divider,
-  Link,
-  Center,
 } from "@chakra-ui/react";
 import { useAtom } from "jotai";
 import React from "react";

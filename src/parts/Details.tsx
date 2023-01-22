@@ -24,7 +24,7 @@ const Details = (props: Props) => {
         top="-1px"
       >
         <Text
-          background="red"
+          background="#e30920"
           padding="3px 10px"
           display="inline-block"
           verticalAlign="middle"

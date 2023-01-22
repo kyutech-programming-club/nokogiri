@@ -1,15 +1,8 @@
 import { Box, Button } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
-import { matchPath, useLocation, useNavigate } from "react-router-dom";
-import { stateAtom } from "../state";
-import { useAtom } from "jotai";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
-type Props = {
-  isNone: string;
-};
-
-const LoginButton = (props: Props) => {
-
+const LoginButton = () => {
   const navigate = useNavigate();
 
   const click = () => {
@@ -19,7 +12,7 @@ const LoginButton = (props: Props) => {
 
   return (
     <Button
-      display={props.isNone}
+      shadow="lg"
       onClick={click}
       colorScheme="blue"
       variant="solid"

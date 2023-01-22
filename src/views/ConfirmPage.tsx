@@ -1,11 +1,9 @@
 import { Box, Center, Link, Text } from "@chakra-ui/react";
 import React from "react";
-
-import Content from "../Content";
 import Footer from "../parts/Footer";
 import Header from "../parts/Header";
 
-const Confirm = () => {
+const ConfirmPage = () => {
   return (
     <Box>
       <Header />
@@ -40,4 +38,4 @@ const Confirm = () => {
   );
 };
 
-export default Confirm;
+export default ConfirmPage;

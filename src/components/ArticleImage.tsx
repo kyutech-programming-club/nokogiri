@@ -1,10 +1,10 @@
 import { Box, Img, Link } from "@chakra-ui/react";
 import React from "react";
 import { ArticleType } from "../parts/Article";
-import thumbnail from "../images/thumbnail.webp";
+import qiita from "../images/qiita.png";
 const ArticleImage = ({ url }: { url: string }) => {
   return (
-    <Box lineHeight="0" overflow="hidden" height="138px">
+    <Box lineHeight="0" overflow="hidden" height="138px" shadow='md'>
       <Link
         href={url}
         margin="0"
@@ -15,7 +15,7 @@ const ArticleImage = ({ url }: { url: string }) => {
         verticalAlign="baseline"
       >
         <Img
-          src={thumbnail}
+          src={qiita}
           alt=""
           width="100%"
           height="100%"
