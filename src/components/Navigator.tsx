@@ -1,14 +1,17 @@
 import { Box, Link } from "@chakra-ui/react";
 import React from "react";
-import LoginButton from "./LoginButton";
-import { useAtom } from "jotai";
-import { stateAtom } from "../state";
-import LogoutButton from "./LogoutButton";
 
-const Navigator = (props: any) => {
+const Navigator = () => {
   return (
-    <Box display="inline-block" alignItems="center" whiteSpace="nowrap">
+    <Box
+      display="inline-block"
+      verticalAlign="middle"
+      whiteSpace="nowrap"
+      lineHeight="0"
+    >
       <Link
+        color="white"
+        textShadow="2px 2px 1px black"
         href="#"
         fontFamily="noto sans japanese,sans-serif"
         fontWeight="900"
@@ -20,6 +23,8 @@ const Navigator = (props: any) => {
         プロ研について
       </Link>
       <Link
+       color="white"
+       textShadow="2px 2px 1px black"
         whiteSpace="nowrap"
         href="/members"
         fontFamily="noto sans japanese,sans-serif"

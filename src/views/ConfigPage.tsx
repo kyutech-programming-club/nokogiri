@@ -25,17 +25,25 @@ import {
 } from "firebase/auth";
 import { FirebaseError } from "@firebase/util";
 import { auth } from "../firebase";
+import {
+  doc,
+  collection,
+  addDoc,
+  getFirestore,
+  setDoc,
+} from "firebase/firestore";
 import { stateAtom } from "../state";
 import { useAtom } from "jotai";
 
-const LoginPage = () => {
+const ConfigPage = () => {
   const [state, setState] = useAtom(stateAtom);
   const navigate = useNavigate();
   const toast = useToast();
+  const db = getFirestore();
 
   type formValues = {
-    email: string;
-    password: string;
+    name: string;
+    id: string;
   };
   const {
     register,
@@ -44,19 +52,18 @@ const LoginPage = () => {
   } = useForm<formValues>();
 
   const onSubmit = async (data: formValues) => {
+    console.log(data.id.replace("@", ""));
     try {
-      const res = await signInWithEmailAndPassword(
-        auth,
-        data.email,
-        data.password
-      );
-      setState({ ...state, isLoggedIn: true, uid: res.user.uid });
+      const userDocumetRef = doc(db, "userInformation", `${state.uid}`);
+      await setDoc(userDocumetRef, {
+        name: data.name,
+        id: data.id.replace("@", ""),
+      });
       toast({
-        title: "ログインしました。",
+        title: "保存しました。",
         status: "success",
         position: "top",
       });
-      navigate("/");
     } catch (e) {
       toast({
         title: "エラーが発生しました。",
@@ -65,9 +72,9 @@ const LoginPage = () => {
       });
       if (e instanceof FirebaseError) {
         console.log(e);
-        navigate("/login");
       }
     }
+    navigate("/");
   };
 
   return (
@@ -79,44 +86,54 @@ const LoginPage = () => {
             <FormControl>
               <Box textAlign="center">
                 <Heading m="24px" fontWeight="900">
-                  メンバーログイン
+                  プロフィールの設定
                 </Heading>
                 <Tooltip
                   hasArrow
-                  label={errors.email?.message}
+                  label={errors.name?.message}
                   bg="red.600"
-                  isOpen={!!errors.email?.message}
+                  isOpen={!!errors.name?.message}
                 >
                   <Input
-                    type="email"
                     borderColor={"blackAlpha.500"}
                     focusBorderColor={"blackAlpha.500"}
-                    placeholder="メールアドレス"
+                    placeholder="名前"
                     height="48px"
                     width="calc(100% - 72px)"
                     borderRadius="0"
-                    {...register("email", {
-                      required: "メールアドレスを入力してください",
+                    {...register("name", {
+                      required: "名前を入力してください",
+                      minLength: {
+                        value: 2,
+                        message: "名前は2文字以上16文字以下です",
+                      },
+                      maxLength: {
+                        value: 16,
+                        message: "名前は2文字以上16文字以下です",
+                      },
                     })}
                     mb="16px"
                   />
                 </Tooltip>
                 <Tooltip
                   hasArrow
-                  label={errors.password?.message}
+                  label={errors.id?.message}
                   bg="red.600"
-                  isOpen={!!errors.password?.message}
+                  isOpen={!!errors.id?.message}
                 >
                   <Input
-                    type="password"
                     borderColor={"blackAlpha.500"}
                     focusBorderColor={"blackAlpha.500"}
-                    placeholder="パスワード"
+                    placeholder="Qiitaアカウントのid"
                     width="calc(100% - 72px)"
                     height="48px"
                     borderRadius="0"
-                    {...register("password", {
-                      required: "パスワードを入力してください",
+                    {...register("id", {
+                      pattern: {
+                        value: /^@/,
+                        message:
+                          "@から始まるqiitaのアカウントのidを入力してください",
+                      },
                     })}
                   />
                 </Tooltip>
@@ -128,7 +145,7 @@ const LoginPage = () => {
                   color="white"
                   isLoading={isSubmitting}
                 >
-                  ログイン
+                  保存する
                 </Button>
 
                 <Box borderTop="solid #cccccc">
@@ -145,4 +162,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default ConfigPage;
