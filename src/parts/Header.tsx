@@ -13,22 +13,21 @@ import { Spacer } from "@chakra-ui/react";
 const Header = () => {
   const [isNone, setIsNone] = useState<string>("");
   const [position, setPosition] = useState<any>("absolute");
-  const [state] = useAtom(stateAtom);
+  const [state, setState] = useAtom(stateAtom);
 
   const { pathname } = useLocation();
 
   useEffect(() => {
-    if (matchPath("/login", pathname)) {
-      setIsNone("none");
-      setPosition("relative");
-    } else if (matchPath("/signup", pathname)) {
-      setIsNone("none");
-      setPosition("relative");
-    } else if (matchPath("/confirm", pathname)) {
-      setIsNone("none");
-      setPosition("relative");
-    } else {
+    setState({ ...state, isNone: "" });
+    if (matchPath("/", pathname)) {
       setPosition("absolute");
+    } else {
+      setPosition("relatilve");
+      if (matchPath("/login", pathname)) {
+        setState({ ...state, isNone: "none" });
+      } else if (matchPath("/logout", pathname)) {
+        setState({ ...state, isNone: "none" });
+      }
     }
   }, [pathname]);
 
@@ -37,14 +36,17 @@ const Header = () => {
       className="inner"
       width="100%"
       height="80px"
+      m="auto"
       position={position}
       borderBottom="solid"
-      alignItems='center'
+      alignItems="center"
     >
       <ProkenIcon />
       <Navigator />
       <Spacer />
-      {state.isLoggedIn ? <LogoutButton /> : <LoginButton isNone={isNone} />}
+      <Box display={state.isNone}>
+        {state.isLoggedIn ? <LogoutButton /> : <LoginButton />}
+      </Box>
       <Hamburger />
     </Flex>
   );

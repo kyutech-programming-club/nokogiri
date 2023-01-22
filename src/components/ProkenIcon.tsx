@@ -1,6 +1,6 @@
 import { Heading, Link, Image } from "@chakra-ui/react";
 import React from "react";
-import proken_mojiicon from "../images/proken__mojiicon.png";
+import proken from "../images/proken.png";
 
 const ProkenIcon = () => {
   return (
@@ -22,7 +22,7 @@ const ProkenIcon = () => {
         height="46px"
         display="block"
       >
-        <Image src={proken_mojiicon} />
+        <Image src={proken} />
         kyutech_proken
       </Link>
     </Heading>
