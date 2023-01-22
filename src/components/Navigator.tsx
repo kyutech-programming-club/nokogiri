@@ -9,7 +9,7 @@ const Navigator = (props: any) => {
   return (
     <Box display="inline-block" alignItems="center" whiteSpace="nowrap">
       <Link
-        href="#"
+        href="/about"
         fontFamily="noto sans japanese,sans-serif"
         fontWeight="900"
         fontSize="16px"
